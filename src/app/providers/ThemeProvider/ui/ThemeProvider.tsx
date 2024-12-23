@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
-import { Theme, ThemeProviderProps } from './TTheme'
-import { LOCAL_STORAGE_THEME_KEY, ThemeContext } from './ThemeContext'
+import { LOCAL_STORAGE_THEME_KEY, ThemeContext } from '../lib/ThemeContext'
+import { Theme, ThemeProviderProps } from '../types/TTheme'
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
 	const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches;
 	const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || isDarkTheme ? Theme.DARK : Theme.LIGHT;
 	
@@ -18,4 +18,3 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
 	)
 };
 
-export default ThemeProvider
